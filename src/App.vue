@@ -4,34 +4,33 @@
     <el-container>
       <el-header id="headerBook">
         <Header/>
-        </el-header>
-      <el-main id="mainBook">
-        <!-- <Login/> -->
+      </el-header>
+      <el-main id="mainBook">          
         <router-view>
-          
+        为的
         </router-view>
       </el-main>
-      
       <el-footer id="footerBook">
         <Footer/>
       </el-footer>
     </el-container>
     
+
   </div>
 </template>
 
 <script>
-//导入header  子组件
-import Header from "./components/Header"
-import Login from "./components/Login"
-import Footer from "./components/Footer"
+//1、导入header 子组件
+import Header from "./components/Header.vue"
+import Login from "./components/Login.vue"
+import Footer from "./components/Footer.vue"
 //2、注册  子组件
 export default {
   name: 'App',
   components: {
-    Header,
-    Login,
-    Footer
+  Header,
+  Login,
+  Footer
   }
 }
 </script>
@@ -58,6 +57,8 @@ export default {
 }
 #footerBook{
   /* background-color: green; */
-  height: 100px  !important;
+  height: 150px  !important;
 }
 </style>
+
+

@@ -1,5 +1,5 @@
 <template>
-  <div ID="loginWrapper">
+  <div id="loginWrapper">
     <div id="loginContent">
       <el-card class="box-card">
         <div slot="header" class="clearfix">
@@ -13,7 +13,7 @@
             <el-input id="password" v-model="user.password" show-password clearable></el-input>
         </div>
         <div id="loginSubmit">
-            <el-button id="systemSubmit" @click="loginSystem">登录</el-button>
+            <el-button id="systemSubmit" @click.native="loginSystem">登录</el-button>
         </div>
       </el-card>
     </div>
@@ -23,45 +23,49 @@
 <script>
 import Axios from 'axios'
 export default {
-  neme:"Login",
-    data() {
+  name:"login",
+    data(){
         return {
             user:{
-                username:"admin",
-                password:"admin"
+                username:"",
+                password:""
             }
         }
     },
-    methods: {
+    methods:{
       loginSystem(){
-        Axios.get('http://localhost:3000/login').then(function(response){
-          alert(response.data)
+        let that = this;
+        Axios.get('http://localhost:3000/login',{
+          params:this.user
+        }).then(function (response){
+            alert(response.data.username)
+            alert(response.data.password)
+            that.$router.push({path:"/work"})
         })
       }
-    },
+    }
 };
 </script>
 
-// less stylus sass
-<style  >
+<style>
 #loginWrapper {
   /* background-color: purple; */
   height: 100%;
 }
-#loginContent {
-  width: 400px;
-  margin: 0 auto;
-  padding-top: 100px;
+#loginContent{
+    width: 400px;
+    margin:0 auto;
+    padding-top: 100px;
 }
 #systemSubmit{
     display: block;
     margin: 0 auto;
     background-color: #0a9588;
-    color: white;
+    color:white;
     border-color: #0a9588;
 }
 #password{
-  margin-top: 5px;
+  margin-top:5px;
   margin-bottom: 8px;
 }
 </style>
